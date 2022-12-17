@@ -1,8 +1,9 @@
-import 'package:orelang_dart/orelang_dart.dart';
+import 'package:orelang_dart/engine.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('calculate', () {
-    expect(calculate(), 42);
+  test('単体の数字を正しく評価できる', () {
+    final result = Engine().eval(1);
+    expect(result, 1);
   });
 }
