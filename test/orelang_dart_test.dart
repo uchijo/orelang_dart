@@ -129,4 +129,17 @@ void main() {
     final result = Engine().eval(['>', 100, 10]);
     expect(result.boolValue, true);
   });
+
+  test('andが正しく評価されるか', () {
+    expect(Engine().eval(['and', true, true]).boolValue, true);
+    expect(Engine().eval(['and', false, true]).boolValue, false);
+    expect(Engine().eval(['and', true, false]).boolValue, false);
+    expect(Engine().eval(['and', false, false]).boolValue, false);
+  });
+  test('orが正しく評価されるか', () {
+    expect(Engine().eval(['or', true, true]).boolValue, true);
+    expect(Engine().eval(['or', false, true]).boolValue, true);
+    expect(Engine().eval(['or', true, false]).boolValue, true);
+    expect(Engine().eval(['or', false, false]).boolValue, false);
+  });
 }
