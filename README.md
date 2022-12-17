@@ -36,3 +36,9 @@ result: 42
   - `["step", expression, ...]`
   - evaluates all given expressions.
   - returns result of evaluation on last expression.
+- `if`
+  - `["if", cond, on_true, on_false]`
+- `skip`
+  - `["skip"]`
+  - doees nothing.
+  - returns novalue.

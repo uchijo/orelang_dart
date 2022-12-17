@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:orelang_dart/engine.dart';
 import 'package:orelang_dart/eval_result.dart';
 import 'package:orelang_dart/operator/set_operator.dart';
@@ -141,5 +143,10 @@ void main() {
     expect(Engine().eval(['or', false, true]).boolValue, true);
     expect(Engine().eval(['or', true, false]).boolValue, true);
     expect(Engine().eval(['or', false, false]).boolValue, false);
+  });
+
+  test('ifの動作確認', () {
+    expect(Engine().eval(['if', true, 1, 2]).intValue, 1);
+    expect(Engine().eval(['if', false, 1, 2]).intValue, 2);
   });
 }

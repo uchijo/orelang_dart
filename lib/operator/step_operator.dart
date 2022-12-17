@@ -10,6 +10,9 @@ class StepOperator implements IOperator {
       return EvalResult.noValue();
     }
     final result = args.map((e) => e.eval(engine)).toList();
-    return result.last;
+    return result.lastWhere(
+      (element) => element.resultType != EvalResultType.novalue,
+      orElse: () => EvalResult.noValue(),
+    );
   }
 }

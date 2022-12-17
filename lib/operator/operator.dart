@@ -4,6 +4,7 @@ import 'package:orelang_dart/expression/expression.dart';
 import 'package:orelang_dart/operator/and_operator.dart';
 import 'package:orelang_dart/operator/equal_operator.dart';
 import 'package:orelang_dart/operator/get_operator.dart';
+import 'package:orelang_dart/operator/if_operator.dart';
 import 'package:orelang_dart/operator/less_operator.dart';
 import 'package:orelang_dart/operator/more_operator.dart';
 import 'package:orelang_dart/operator/multiply_operator.dart';
@@ -27,6 +28,8 @@ final operators = <String, IOperator>{
   'get': GetOperator(),
   'step': StepOperator(),
   'while': WhileOperator(),
+  'if': IfOperator(),
+  'skip': IfOperator(),
 };
 
 abstract class IOperator {

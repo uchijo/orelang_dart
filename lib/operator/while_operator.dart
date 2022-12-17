@@ -8,7 +8,10 @@ class WhileOperator implements IOperator {
   EvalResult call(Engine engine, List<IExpression> args) {
     var retval = EvalResult.noValue();
     while (args[0].eval(engine).boolValue!) {
-      retval = args[1].eval(engine);
+      final temporaryResult = args[1].eval(engine);
+      if (temporaryResult.resultType != EvalResultType.novalue) {
+        retval = temporaryResult;
+      }
     }
     return retval;
   }
