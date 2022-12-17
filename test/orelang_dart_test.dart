@@ -1,4 +1,5 @@
 import 'package:orelang_dart/engine.dart';
+import 'package:orelang_dart/eval_result.dart';
 import 'package:orelang_dart/operator/set_operator.dart';
 import 'package:test/test.dart';
 
@@ -77,5 +78,46 @@ void main() {
       ['get', 'hoge'],
     ]);
     expect(result.intValue, 100);
+  });
+
+  test('単体のboolを正しく評価できる', () {
+    final result1 = Engine().eval(true);
+    expect(result1.boolValue, true);
+    final result2 = Engine().eval(false);
+    expect(result2.boolValue, false);
+  });
+
+  test('whileに渡された評価式がfalseだった場合は何もしない', () {
+    // 実行されたら終わらない。仮に終わっても .novalue は返らない
+    final result = Engine().eval([
+      'while',
+      false,
+      1,
+    ]);
+    expect(result.resultType, EvalResultType.novalue);
+  });
+  test('whileのテスト', () {
+    final result = Engine().eval([
+      'step',
+      ['set', 'iter', 0],
+      [
+        'while',
+        [
+          '==',
+          0,
+          ['get', 'iter'],
+        ],
+        [
+          'set',
+          'iter',
+          [
+            '+',
+            1,
+            ['get', 'iter']
+          ]
+        ],
+      ],
+    ]);
+    expect(result.intValue, 1);
   });
 }

@@ -1,4 +1,5 @@
 import 'package:orelang_dart/eval_result.dart';
+import 'package:orelang_dart/expression/boolean_immediate.dart';
 import 'package:orelang_dart/expression/call_operator.dart';
 import 'package:orelang_dart/expression/expression.dart';
 import 'package:orelang_dart/expression/identifier.dart';
@@ -11,6 +12,9 @@ class Engine {
   }
 
   IExpression getExpression(Object script) {
+    if (script is bool) {
+      return BooleanImmediate(script);
+    }
     if (script is int) {
       return ImmediateValue(script);
     }

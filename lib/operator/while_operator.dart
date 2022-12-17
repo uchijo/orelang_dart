@@ -6,6 +6,10 @@ import 'package:orelang_dart/operator/operator.dart';
 class WhileOperator implements IOperator {
   @override
   EvalResult call(Engine engine, List<IExpression> args) {
-    
+    var retval = EvalResult.noValue();
+    while (args[0].eval(engine).boolValue!) {
+      retval = args[1].eval(engine);
+    }
+    return retval;
   }
 }

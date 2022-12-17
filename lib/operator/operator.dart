@@ -7,6 +7,7 @@ import 'package:orelang_dart/operator/multiply_operator.dart';
 import 'package:orelang_dart/operator/plus_operator.dart';
 import 'package:orelang_dart/operator/set_operator.dart';
 import 'package:orelang_dart/operator/step_operator.dart';
+import 'package:orelang_dart/operator/while_operator.dart';
 
 final operators = <String, IOperator>{
   '+': PlusOperator(),
@@ -15,6 +16,7 @@ final operators = <String, IOperator>{
   'set': SetOperator(),
   'get': GetOperator(),
   'step': StepOperator(),
+  'while': WhileOperator(),
 };
 
 abstract class IOperator {
