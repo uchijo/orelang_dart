@@ -16,8 +16,9 @@ class SetOperator implements IOperator {
       throw Exception('invalid identifier type detected.');
     }
 
-    variables[(args[0] as Identifier).value] = args[1].eval(engine);
-    return EvalResult.noValue();
+    final evaluated = args[1].eval(engine);
+    variables[(args[0] as Identifier).value] = evaluated;
+    return evaluated;
   }
 }
 
