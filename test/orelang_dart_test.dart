@@ -21,4 +21,19 @@ void main() {
   test('足し算の項の数が誤ってたら例外を投げる', () {
     expect(() => Engine().eval(['+', 2]), throwsA(TypeMatcher<Exception>()));
   });
+  test('掛け算の項の数が誤ってたら例外を投げる', () {
+    expect(() => Engine().eval(['*', 2]), throwsA(TypeMatcher<Exception>()));
+  });
+  test('ネストなしの掛け算ができる', () {
+    final result = Engine().eval(['*', 21, 2]);
+    expect(result, 42);
+  });
+  test('ネストありの掛け算ができる', () {
+    final result = Engine().eval([
+      '*',
+      2,
+      ['*', 3, 7]
+    ]);
+    expect(result, 42);
+  });
 }
