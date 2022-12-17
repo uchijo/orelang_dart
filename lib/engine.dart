@@ -15,7 +15,7 @@ class Engine {
     if (script is List) {
       final operatorName = script[0] as String;
       final operator = operators[operatorName]!;
-      final args = (script as List<IExpression>).sublist(1);
+      final args = script.sublist(1).map((e) => getExpression(e)).toList();
       return CallOperator(
         operator,
         args,
