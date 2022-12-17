@@ -7,5 +7,5 @@ class ImmediateValue implements IExpression {
   ImmediateValue(this.value);
 
   @override
-  Object eval(Engine engine) => value;
+  int eval(Engine engine) => value;
 }

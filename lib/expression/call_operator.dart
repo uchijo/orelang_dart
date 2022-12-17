@@ -9,5 +9,5 @@ class CallOperator implements IExpression {
   CallOperator(this.operator, this.args);
 
   @override
-  Object eval(Engine engine) => operator.call(engine, args);
+  int eval(Engine engine) => operator.call(engine, args);
 }
