@@ -1,4 +1,5 @@
 import 'package:orelang_dart/engine.dart';
+import 'package:orelang_dart/eval_result.dart';
 import 'package:orelang_dart/expression/expression.dart';
 
 class ImmediateValue implements IExpression {
@@ -7,5 +8,5 @@ class ImmediateValue implements IExpression {
   ImmediateValue(this.value);
 
   @override
-  int eval(Engine engine) => value;
+  EvalResult eval(Engine engine) => EvalResult.asInt(value);
 }

@@ -1,5 +1,6 @@
 import 'package:orelang_dart/engine.dart';
+import 'package:orelang_dart/eval_result.dart';
 
 abstract class IExpression {
-  int eval(Engine engine);
+  EvalResult eval(Engine engine);
 }

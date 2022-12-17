@@ -1,4 +1,5 @@
 import 'package:orelang_dart/engine.dart';
+import 'package:orelang_dart/eval_result.dart';
 import 'package:orelang_dart/expression/expression.dart';
 import 'package:orelang_dart/operator/operator.dart';
 
@@ -9,5 +10,5 @@ class CallOperator implements IExpression {
   CallOperator(this.operator, this.args);
 
   @override
-  int eval(Engine engine) => operator.call(engine, args);
+  EvalResult eval(Engine engine) => operator.call(engine, args);
 }

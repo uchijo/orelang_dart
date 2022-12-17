@@ -1,3 +1,4 @@
+import 'package:orelang_dart/eval_result.dart';
 import 'package:orelang_dart/expression/call_operator.dart';
 import 'package:orelang_dart/expression/expression.dart';
 import 'package:orelang_dart/expression/immediate_valuel.dart';
@@ -5,7 +6,7 @@ import 'package:orelang_dart/operator/operator.dart';
 
 class Engine {
   int eval(Object script) {
-    return getExpression(script).eval(this);
+    return getExpression(script).eval(this).intValue!;
   }
 
   IExpression getExpression(Object script) {
