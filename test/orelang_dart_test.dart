@@ -120,4 +120,13 @@ void main() {
     ]);
     expect(result.intValue, 1);
   });
+
+  test('lessが正しく評価されるか', () {
+    final result = Engine().eval(['<', 10, 100]);
+    expect(result.boolValue, true);
+  });
+  test('moreが正しく評価されるか', () {
+    final result = Engine().eval(['>', 100, 10]);
+    expect(result.boolValue, true);
+  });
 }
