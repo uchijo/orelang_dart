@@ -11,7 +11,14 @@ void main() {
     expect(result, 42);
   });
   test('ネストありの足し算ができる', () {
-    final result = Engine().eval(['+', ['+', 20, 20], 2]);
+    final result = Engine().eval([
+      '+',
+      ['+', 20, 20],
+      2
+    ]);
     expect(result, 42);
+  });
+  test('足し算の項の数が誤ってたら例外を投げる', () {
+    expect(() => Engine().eval(['+', 2]), throwsA(TypeMatcher<Exception>()));
   });
 }
