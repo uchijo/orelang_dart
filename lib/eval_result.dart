@@ -10,6 +10,9 @@ class EvalResult {
   factory EvalResult.asBool(bool value) {
     return EvalResult(null, value, EvalResultType.boolean);
   }
+  factory EvalResult.noValue() {
+    return EvalResult(null, null, EvalResultType.novalue);
+  }
 
   T when<T>({
     T Function(int)? whenInt,

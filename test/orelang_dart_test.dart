@@ -1,9 +1,16 @@
-import 'dart:math';
-
 import 'package:orelang_dart/engine.dart';
+import 'package:orelang_dart/operator/set_operator.dart';
 import 'package:test/test.dart';
 
 void main() {
+  // 一応動かす前と動かした後に変数のプールをリセットする
+  setUp(() {
+    variables.clear();
+  });
+  tearDown(() {
+    variables.clear();
+  });
+
   test('単体の数字を正しく評価できる', () {
     final result = Engine().eval(1);
     expect(result.intValue!, 1);
@@ -45,7 +52,30 @@ void main() {
     expect(result.boolValue!, true);
   });
   test('ネストされた数字どうしの比較ができる', () {
-    final result = Engine().eval(['==', ['*', 21, 2], 42]);
+    final result = Engine().eval([
+      '==',
+      ['*', 21, 2],
+      42
+    ]);
     expect(result.boolValue!, true);
+  });
+
+  test('複数の計算を行える', () {
+    final result = Engine().eval([
+      'step',
+      ['+', 1, 2],
+      ['+', 1, 2],
+      ['+', 1, 2],
+      ['+', 9, 10],
+    ]);
+    expect(result.intValue, 19);
+  });
+  test('変数の代入、取り出しが可能', () {
+    final result = Engine().eval([
+      'step',
+      ['set', 'hoge', 100],
+      ['get', 'hoge'],
+    ]);
+    expect(result.intValue, 100);
   });
 }
