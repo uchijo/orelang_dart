@@ -4,6 +4,8 @@
 
 implemented [orelang](https://qiita.com/shuetsu@github/items/ac21e597265d6bb906dc) with dart language.
 
+c.f. https://qiita.com/Uchijo/items/4fd9849ac223b80d7615
+
 ## usage
 
 ```
